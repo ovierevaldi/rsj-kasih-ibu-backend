@@ -7,7 +7,6 @@ export default class JenisPengobatanController{
     try {
       await prisma.jenis_pengobatan.create({
         data: {
-          id: jenisPengobatanInput.id,
           nama_pengobatan: jenisPengobatanInput.nama_pengobatan
         }
       });
