@@ -1,0 +1,82 @@
+import { DokterInputData, DokterProp, DokterUpdateData } from "../types/dokter";
+
+const prisma = require("../lib/prisma");
+
+const listDokter = async (): Promise<DokterProp[]> => {
+
+  try {
+     const dokterList = await prisma.dokter.findMany({
+      orderBy: {
+        nama: 'asc'
+      }
+     });
+
+     return dokterList.map((dokter: any) => ({
+        id: dokter.id,
+        nama: dokter.nama
+     }));
+
+
+  } catch (error) {
+    console.log(error)
+    throw new Error("Failed to fetch Dokter list");
+  }
+};
+
+const getDokterById = async (id: number): Promise<DokterProp | null> => {
+  try {
+    const dokter = await prisma.dokter.findUnique({
+      where: {
+        id: id
+      }
+    });
+
+    if (!dokter) {
+      return null;
+    }
+
+    return {
+      id: dokter.id,
+      nama: dokter.nama
+    };
+  } catch (error) {
+
+    console.log(error);
+    throw new Error("Failed to fetch Dokter by ID");
+  }
+}
+
+const insertDokter = async (data: DokterInputData): Promise<boolean> => {
+  try {
+    await prisma.dokter.create({
+      data: {
+        nama: data.nama
+      }
+    });
+
+    return true;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to insert Dokter");    
+  }
+};
+
+const updateDokter = async (id: number, data: DokterUpdateData): Promise<boolean> => {
+  try {
+    await prisma.dokter.update({
+      where: {
+        id: id
+      },
+      data: {
+        nama: data.nama
+      }
+    });
+
+    return true;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to update Dokter");
+  }
+}
+
+module.exports = { listDokter, insertDokter, getDokterById, updateDokter };
