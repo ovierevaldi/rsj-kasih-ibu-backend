@@ -13,7 +13,8 @@ const listDokter = async (): Promise<DokterProp[]> => {
 
      return dokterList.map((dokter: any) => ({
         id: dokter.id,
-        nama: dokter.nama
+        nama: dokter.nama,
+        jenis_pengobatan_id: dokter.jenis_pengobatan_id
      }));
 
 
@@ -37,7 +38,9 @@ const getDokterById = async (id: number): Promise<DokterProp | null> => {
 
     return {
       id: dokter.id,
-      nama: dokter.nama
+      nama: dokter.nama,
+      jenis_pengobatan_id: dokter.jenis_pengobatan_id
+      
     };
   } catch (error) {
 
@@ -50,7 +53,8 @@ const insertDokter = async (data: DokterInputData): Promise<boolean> => {
   try {
     await prisma.dokter.create({
       data: {
-        nama: data.nama
+        nama: data.nama,
+        jenis_pengobatan_id: data.jenis_pengobatan_id
       }
     });
 

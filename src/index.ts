@@ -26,6 +26,7 @@ app.use('/pendaftaran', require('./routes/pendaftaran.routes'));
 app.use('/dokter', require('./routes/dokter.routes'));
 app.use('/jenis-pengobatan', require('./routes/jenis_pengobatan.routes'));
 app.use('/metode-pembayaran', require('./routes/metode_pembayaran.routes'));
+app.use('/jadwal-pengobatan', require('./routes/jadwal_pengobatan.route'));
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello, world!');
