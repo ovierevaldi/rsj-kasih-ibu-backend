@@ -17,7 +17,7 @@ model jenis_pengobatan {
   id Int @id @default(autoincrement())
   createdBy String @db.VarChar(255) @default("")
   modifiedBy String @db.VarChar(255) @default("")
-  nama String @db.VarChar(255)
+  nama_pengobatan String @db.VarChar(255)
 
   pendaftaran Pendaftaran[]
 }
