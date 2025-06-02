@@ -29,7 +29,7 @@ export default class JenisPengobatanController{
 
       return jenisPengobatanList.map((jp: any) => ({
           id: jp.id,
-          nama: jp.nama_pengobatan
+          nama_pengobatan: jp.nama_pengobatan
       }));
 
 
