@@ -4,6 +4,8 @@ import type { Request, Response } from 'express';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const cors = require('cors');
+
 // const { PrismaClient } = require('@prisma/client');
 // const prisma = new PrismaClient();
 
@@ -14,6 +16,9 @@ const PORT = process.env.PORT || 3000;
 // // main()
 // //   .catch(e => console.error(e))
 // //   .finally(() => prisma.$disconnect());
+
+// allow all origins (development only)
+app.use(cors())
 
 app.use(express.json())
 
