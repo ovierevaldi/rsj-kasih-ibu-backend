@@ -16,6 +16,19 @@ router.get('/', (req: Request, res: Response) => {
   });
 })
 
+router.get('/by-date', (req: Request, res: Response) => {
+  const dateString = req.query.date as string
+
+  JadwalPengobatanController.prototype.listJadwalPengobatanByDate(dateString)
+  .then((result: JadwalPengobatanProp[]) => {
+    res.status(200).json(result);
+  })
+  .catch((error: Error) => {
+    console.error("Error fetching Jadwal Pengobatan:", error);
+    res.status(500).json({ message: error.message });
+  });
+})
+
 router.post('/', (req: Request, res: Response) => {
   const input = req.body as JadwalPengobatanInput;
 
