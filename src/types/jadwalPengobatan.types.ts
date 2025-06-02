@@ -6,5 +6,6 @@ export type JadwalPengobatanInput = {
 export type JadwalPengobatanProp = {
   id: number;
   jadwal: Date;
-  id_dokter: number;
+  id_dokter?: number;
+  nama_dokter?: string;
 }

@@ -25,17 +25,29 @@ export default class JadwalPengobatanController {
     }
   };
 
-  async listJadwalPengobatanByDate(date: string): Promise<JadwalPengobatanProp[]> {
+  async listJadwalPengobatanByDate(date: string, jenis_pengobatan?: number): Promise<JadwalPengobatanProp[]> {
     try {
       const selectedDate = new Date(date);
       const { start, end } = this.getStartAndEndOfDate(selectedDate);
       
       const jadwalPengobatanList = await prisma.jadwalPengobatan.findMany({
         where: {
-         jadwal: {
-          gte: start,
-          lt: end
-        }
+          jadwal: {
+            gte: start,
+            lt: end
+          },
+          ...(jenis_pengobatan && {
+            dokter: {
+              jenis_pengobatan_id: jenis_pengobatan
+            }
+          })
+        },
+        include: {
+          dokter: {
+            include: {
+              jenis_pengobatan: true
+            }
+          }
         },
         orderBy: {
           jadwal: 'asc'
@@ -45,7 +57,8 @@ export default class JadwalPengobatanController {
       return jadwalPengobatanList.map((jp: any) => ({
           id: jp.id,
           jadwal: jp.jadwal,
-          id_dokter: jp.id_dokter
+          id_dokter: jp.dokter?.id,
+          nama_dokter: jp.dokter?.nama
       }));
 
 

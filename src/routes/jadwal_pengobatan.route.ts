@@ -17,9 +17,10 @@ router.get('/', (req: Request, res: Response) => {
 })
 
 router.get('/by-date', (req: Request, res: Response) => {
-  const dateString = req.query.date as string
-
-  JadwalPengobatanController.prototype.listJadwalPengobatanByDate(dateString)
+  const dateString = req.query.date as string;
+  const jenisPengobatan = req.query.jenis_pengobatan ? parseInt(req.query.jenis_pengobatan as string) : undefined;
+  
+  JadwalPengobatanController.prototype.listJadwalPengobatanByDate(dateString, jenisPengobatan)
   .then((result: JadwalPengobatanProp[]) => {
     res.status(200).json(result);
   })
