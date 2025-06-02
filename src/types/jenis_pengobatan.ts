@@ -1,5 +1,4 @@
 export type JenisPengobatanInput =  {
-  id: string;
   nama_pengobatan: string;
 };
 
