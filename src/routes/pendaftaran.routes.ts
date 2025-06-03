@@ -34,8 +34,8 @@ router.post('/', (req: Request, res: Response) => {
   const pendaftaranData = req.body as PendaftaranInput;
 
   insertPendaftaran(pendaftaranData)
-  .then(() => {
-    res.status(201).json({ message: "Pendaftaran created successfully!" });
+  .then((pendaftaranId: number) => {
+    res.status(201).json({ message: "Pendaftaran created successfully!", data: pendaftaranId});
   })
   .catch((error: Error) => {
     console.error(error);

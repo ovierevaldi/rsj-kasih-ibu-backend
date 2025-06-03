@@ -2,9 +2,9 @@ import { PendaftaranInput, PendaftaranProp } from "../types/pendaftaran";
 
 const prisma = require("../lib/prisma")
 
-const insertPendaftaran = async (inputData: PendaftaranInput): Promise<boolean> => {
+const insertPendaftaran = async (inputData: PendaftaranInput): Promise<number> => {
   try {
-    await prisma.pendaftaran.create({
+    const newPendaftaran = await prisma.pendaftaran.create({
       data:{
         nama_pasien: inputData.nama_pasien,
         tanggal_lahir: new Date(inputData.tanggal_lahir),
@@ -17,7 +17,7 @@ const insertPendaftaran = async (inputData: PendaftaranInput): Promise<boolean> 
       }
     });
 
-    return true;
+    return newPendaftaran.id;
     
   } catch (error) {
     console.log(error);
