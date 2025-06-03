@@ -31,8 +31,6 @@ model dokter {
   jenis_pengobatan_id Int
   jenis_pengobatan jenis_pengobatan @relation(fields: [jenis_pengobatan_id], references: [id])
 
-  pendaftaran Pendaftaran[]
-
   jadwal_pengobatan JadwalPengobatan[]
 }
 
@@ -52,19 +50,16 @@ model Pendaftaran {
   createdAt DateTime @default(now()) @db.Timestamp(6)
   updatedAt DateTime @updatedAt @db.Timestamp(6)
 
-  nomor_pendaftaran String @db.VarChar(255)
   nama_pasien String @db.VarChar(255)
   tanggal_lahir DateTime @db.Date
   tempat_lahir String @db.VarChar(255)
   jenis_kelamin String @db.VarChar(10)
   alamat String @db.Text
   keluhan String @db.Text
- 
-  waktu_pengobatan DateTime @db.Timestamp() 
 
   //Foreign Keys and Relations
-  dokter_pengobatan_id Int
-  dokter dokter @relation(fields: [dokter_pengobatan_id], references: [id])
+  jadwal_pengobatan_id Int
+  jadwal_pengobatan JadwalPengobatan @relation(fields: [jadwal_pengobatan_id], references: [id])
 
   metode_pembayaran_id Int
   metode_pembayaran metode_pembayaran @relation(fields: [metode_pembayaran_id], references: [id])
@@ -82,4 +77,6 @@ model JadwalPengobatan {
   //Foreign Keys and Relations
   id_dokter Int
   dokter dokter @relation(fields: [id_dokter], references: [id])
+
+  pendaftaran Pendaftaran[]
 }

@@ -1,29 +1,80 @@
-import { PendaftaranInput } from "../types/pendaftaran";
+import { PendaftaranInput, PendaftaranProp } from "../types/pendaftaran";
 
 const prisma = require("../lib/prisma")
 
-const insertPendaftaran = async (inputData: PendaftaranInput) => {
+const insertPendaftaran = async (inputData: PendaftaranInput): Promise<boolean> => {
   try {
     await prisma.pendaftaran.create({
       data:{
         nama_pasien: inputData.nama_pasien,
-        tanggal_lahir: inputData.tanggal_lahir,
+        tanggal_lahir: new Date(inputData.tanggal_lahir),
         tempat_lahir: inputData.tempat_lahir,
         jenis_kelamin: inputData.jenis_kelamin,
         alamat: inputData.alamat,
         keluhan: inputData.keluhan,
-        jenis_pengobatan_id: inputData.jenis_pengobatan_id,
-        dokter_pengobatan_id: inputData.dokter_pengobatan_id,
-        waktu_pengobatan: inputData.waktu_pengobatan,
-        metode_pembayaran_id: inputData.metode_pembayaran_id
+        jadwal_pengobatan_id: inputData.jadwal_pengobatan_id,
+        metode_pembayaran_id: inputData.metode_pembayaran_id,
       }
     });
 
-    return 'Pendaftaran inserted successfully';
+    return true;
     
   } catch (error) {
     console.log(error);
 
     throw new Error("Failed to insert Pendaftaran")
   }
-}
+};
+
+const getPendaftaranById = async (id: number): Promise<PendaftaranProp | null> => {
+  try {
+    const pendaftaran = await prisma.pendaftaran.findUnique({
+      where: {
+        id: id
+      },
+      include: {
+        jadwal_pengobatan: {
+          include: {
+            dokter: {
+              include: {
+                jenis_pengobatan: true
+              }
+            }
+          }
+        },
+        metode_pembayaran: true,
+      },
+    });
+
+    if (!pendaftaran) {
+      return null;
+    }
+
+    return {...pendaftaran};
+  } catch (error) {
+
+    console.log(error);
+    throw new Error("Failed to fetch pendaftaran by ID");
+  }
+};
+
+
+const listPendaftaran = async (): Promise<PendaftaranProp[]> => {
+
+  try {
+    const pendaftaranList = await prisma.pendaftaran.findMany({
+      orderBy: {
+        nama_pasien: 'asc'
+      }
+    });
+
+     return pendaftaranList.map((pendaftaran: PendaftaranProp) => ({...pendaftaran}));
+
+  } catch (error) {
+    console.log(error)
+    throw new Error("Failed to fetch pendaftaran list");
+  }
+};
+
+
+module.exports = { insertPendaftaran, listPendaftaran, getPendaftaranById }
