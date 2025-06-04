@@ -21,12 +21,12 @@ app.use('/metode-pembayaran', metodePembayaranRoutes);
 app.use('/jadwal-pengobatan', jadwalPengobatanRoutes);
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Hello, world!');
+  res.send('Hello, worlds!');
 });
 
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}`);
-// });
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 export default app;
 
