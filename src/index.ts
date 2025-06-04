@@ -29,10 +29,10 @@ app.get('/', (req: Request, res: Response) => {
 //   console.log(`Server is running on port ${PORT}`);
 // });
 
-export const handler = serverless(app, { provider: 'azure' });
-
-export default async (context: any, req: any) => {
-  context.res = await handler(context, req);
-};
+// export const handler = serverless(app, { provider: 'azure' });
+export default serverless(app);
+// export const funcName = async (context: any, req: any) => {
+//   context.res = await handler(context, req);
+// };
 
 // export const handler = serverless(app);
