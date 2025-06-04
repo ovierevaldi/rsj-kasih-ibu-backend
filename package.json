@@ -2,10 +2,9 @@
   "name": "rsj-kasih-ibu-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node dist/api/index.js",
+    "start": "node dist/src/index.js",
     "dev": "nodemon",
     "build": "tsc",
     "postinstall": "prisma generate"
