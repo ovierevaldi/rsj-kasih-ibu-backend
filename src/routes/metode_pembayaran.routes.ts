@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
-import { MetodePembayaranInput, MetodePembayaranProp, MetodePembayaranUpdate } from '../types/metode_pembayaran.ts';
-import MetodePembayaranController from '../controller/metode_pembarayaran.controller.ts';
+import { MetodePembayaranInput, MetodePembayaranProp, MetodePembayaranUpdate } from '../types/metode_pembayaran';
+import MetodePembayaranController from '../controller/metode_pembarayaran.controller.js';
 
 const router = Router();
 

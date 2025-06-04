@@ -1,11 +1,11 @@
 import express from 'express'
 import type { Request, Response } from 'express';
 import cors from 'cors';
-import pendaftaranRoutes from './routes/pendaftaran.routes.ts';
-import dokterRoutes from './routes/dokter.routes.ts';
-import jenisPengobatanRoutes from './routes/jenis_pengobatan.routes.ts';
-import metodePembayaranRoutes from './routes/metode_pembayaran.routes.ts';
-import jadwalPengobatanRoutes from './routes/jadwal_pengobatan.route.ts';
+import pendaftaranRoutes from './routes/pendaftaran.routes.js';
+import dokterRoutes from './routes/dokter.routes.js';
+import jenisPengobatanRoutes from './routes/jenis_pengobatan.routes.js';
+import metodePembayaranRoutes from './routes/metode_pembayaran.routes.js';
+import jadwalPengobatanRoutes from './routes/jadwal_pengobatan.route.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;

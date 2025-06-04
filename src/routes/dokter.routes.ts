@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
-import { DokterInputData, DokterProp } from '../types/dokter.ts';
-import dokter from '../controller/dokter.controller.ts'
+import { DokterInputData, DokterProp } from '../types/dokter';
+import dokter from '../controller/dokter.controller.js'
  
 const router: Router = Router();
 

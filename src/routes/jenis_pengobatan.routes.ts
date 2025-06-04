@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
-import JenisPengobatanController from '../controller/jenis_pengobatan.controller.ts';
-import { JenisPengobatanInput, JenisPengobatanProp, JenisPengobatanUpdate } from '../types/jenis_pengobatan.ts';
+import JenisPengobatanController from '../controller/jenis_pengobatan.controller.js';
+import { JenisPengobatanInput, JenisPengobatanProp, JenisPengobatanUpdate } from '../types/jenis_pengobatan';
 
 const router = Router();
 

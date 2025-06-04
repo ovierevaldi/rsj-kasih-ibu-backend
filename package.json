@@ -2,11 +2,12 @@
   "name": "rsj-kasih-ibu-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "api/index.ts",
+  "main": "api/index.js",
   "type": "module",
   "scripts": {
-    "start": "node --loader ts-node/esm api/index.ts",
+    "start": "node dist/api/index.js",
     "dev": "nodemon",
+    "build": "rm -rf dist && tsc",
     "postinstall": "prisma generate"
   },
   "author": "Ovie Revaldi",

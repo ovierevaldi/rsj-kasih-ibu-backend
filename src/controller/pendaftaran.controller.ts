@@ -1,6 +1,6 @@
-import { PendaftaranInput, PendaftaranProp } from "../types/pendaftaran.ts";
+import { PendaftaranInput, PendaftaranProp } from "../types/pendaftaran";
 
-import prisma from "../lib/prisma.ts";
+import prisma from "../lib/prisma.js";
 
 const insertPendaftaran = async (inputData: PendaftaranInput): Promise<number> => {
   try {

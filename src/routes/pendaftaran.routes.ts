@@ -1,8 +1,8 @@
 import { Router, Request, Response } from 'express';
-import { PendaftaranInput, PendaftaranProp } from '../types/pendaftaran.ts';
+import { PendaftaranInput, PendaftaranProp } from '../types/pendaftaran';
 
 // some-other-file.ts
-import pendaftaranService from '../controller/pendaftaran.controller.ts'
+import pendaftaranService from '../controller/pendaftaran.controller.js'
 
 
 const router = Router();

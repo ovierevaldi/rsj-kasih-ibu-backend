@@ -1,5 +1,5 @@
-import { JadwalPengobatanInput, JadwalPengobatanProp } from "../types/jadwalPengobatan.types.ts";
-import prisma from "../lib/prisma.ts";
+import { JadwalPengobatanInput, JadwalPengobatanProp } from "../types/jadwalPengobatan.types";
+import prisma from "../lib/prisma.js";
 export default class JadwalPengobatanController {
 
   async listJadwalPengobatan(): Promise<JadwalPengobatanProp[]> {

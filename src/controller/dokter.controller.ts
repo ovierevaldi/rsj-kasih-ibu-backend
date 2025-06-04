@@ -1,5 +1,5 @@
-import { DokterInputData, DokterProp, DokterUpdateData } from "../types/dokter.ts";
-import prisma from "../lib/prisma.ts";
+import { DokterInputData, DokterProp, DokterUpdateData } from "../types/dokter";
+import prisma from "../lib/prisma.js";
 
 const listDokter = async (): Promise<DokterProp[]> => {
 

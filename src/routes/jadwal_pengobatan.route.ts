@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
-import JadwalPengobatanController from "../controller/jadwal_pengobatan.controller.ts";
-import { JadwalPengobatanInput, JadwalPengobatanProp } from "../types/jadwalPengobatan.types.ts";
+import JadwalPengobatanController from "../controller/jadwal_pengobatan.controller.js";
+import { JadwalPengobatanInput, JadwalPengobatanProp } from "../types/jadwalPengobatan.types";
 
 const router = Router();
 
