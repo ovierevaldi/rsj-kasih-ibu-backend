@@ -7,6 +7,3 @@ node_modules
 /generated/prisma
 
 dist
-
-/prisma/schema.prisma
-/node_modules/.prisma/
