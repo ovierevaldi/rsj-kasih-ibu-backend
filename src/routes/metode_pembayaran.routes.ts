@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
-import { MetodePembayaranInput, MetodePembayaranProp, MetodePembayaranUpdate } from '../types/metode_pembayaran';
-import MetodePembayaranController from '../controller/metode_pembarayaran.controller';
+import { MetodePembayaranInput, MetodePembayaranProp, MetodePembayaranUpdate } from '../types/metode_pembayaran.ts';
+import MetodePembayaranController from '../controller/metode_pembarayaran.controller.ts';
 
 const router = Router();
 
@@ -65,4 +65,4 @@ router.put('/:id', (req: Request, res: Response) => {
 });
 
 
-module.exports  = router;
+export default router;

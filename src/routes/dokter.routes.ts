@@ -1,11 +1,11 @@
 import { Router, Request, Response } from 'express';
-import { DokterInputData, DokterProp } from '../types/dokter';
-const { insertDokter, listDokter, getDokterById, updateDokter } = require('../controller/dokter.controller');
+import { DokterInputData, DokterProp } from '../types/dokter.ts';
+import dokter from '../controller/dokter.controller.ts'
  
 const router: Router = Router();
 
 router.get('/', (req: Request, res: Response) => {
-  listDokter()
+  dokter.listDokter()
   .then((dokterList: DokterProp[]) =>{
     return res.status(200).json(dokterList)
   })
@@ -17,7 +17,7 @@ router.get('/', (req: Request, res: Response) => {
 router.get('/:id', (req: Request, res: Response) => {
   const id = parseInt(req.params.id, 10);
 
-  getDokterById(id)
+  dokter.getDokterById(id)
   .then((dokter: DokterProp | null) =>{
     if(!dokter)
       return res.status(404).json({ message: 'Dokter not found' });
@@ -33,7 +33,7 @@ router.get('/:id', (req: Request, res: Response) => {
 router.post('/', (req: Request, res: Response) => {
   const data = req.body;
 
-  insertDokter(data as DokterInputData)
+  dokter.insertDokter(data as DokterInputData)
   .then((result: boolean) => {
     if (result) {
       res.status(201).json({ message: 'Dokter created successfully' });
@@ -50,7 +50,7 @@ router.put('/:id', (req: Request, res: Response) => {
   const id = parseInt(req.params.id, 10);
   const data = req.body;
 
-  updateDokter(id, data)
+  dokter.updateDokter(id, data)
   .then((result: boolean) => {
     if (result) {
       res.status(200).json({ message: 'Dokter updated successfully' });
@@ -64,4 +64,4 @@ router.put('/:id', (req: Request, res: Response) => {
   
 });
 
-module.exports = router;
+export default router;

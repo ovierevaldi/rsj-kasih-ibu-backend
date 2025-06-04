@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
-import JadwalPengobatanController from "../controller/jadwal_pengobatan.controller";
-import { JadwalPengobatanInput, JadwalPengobatanProp } from "../types/jadwalPengobatan.types";
+import JadwalPengobatanController from "../controller/jadwal_pengobatan.controller.ts";
+import { JadwalPengobatanInput, JadwalPengobatanProp } from "../types/jadwalPengobatan.types.ts";
 
 const router = Router();
 
@@ -47,4 +47,4 @@ router.post('/', (req: Request, res: Response) => {
   });
 })
 
-module.exports = router;
+export default router;

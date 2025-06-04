@@ -6,6 +6,6 @@ export type MetodePembayaranInput =  {
 export type MetodePembayaranUpdate =  Partial<MetodePembayaranInput>;
 
 export type MetodePembayaranProp =  {
-  id: string;
+  id: number;
   nama: string;
 }

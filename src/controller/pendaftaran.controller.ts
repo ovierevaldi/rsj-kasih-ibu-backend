@@ -1,6 +1,6 @@
-import { PendaftaranInput, PendaftaranProp } from "../types/pendaftaran";
+import { PendaftaranInput, PendaftaranProp } from "../types/pendaftaran.ts";
 
-const prisma = require("../lib/prisma")
+import prisma from "../lib/prisma.ts";
 
 const insertPendaftaran = async (inputData: PendaftaranInput): Promise<number> => {
   try {
@@ -50,7 +50,20 @@ const getPendaftaranById = async (id: number): Promise<PendaftaranProp | null> =
       return null;
     }
 
-    return {...pendaftaran};
+     const { jenis_kelamin } = pendaftaran;
+    const validJenisKelamin = jenis_kelamin === 'L' || jenis_kelamin === 'P' ? jenis_kelamin : 'L'; // fallback
+
+    return {
+      alamat: pendaftaran.alamat,
+      id: pendaftaran.id,
+      jadwal_pengobatan_id: pendaftaran.jadwal_pengobatan.id,
+      jenis_kelamin: validJenisKelamin,
+      keluhan: pendaftaran.keluhan,
+      metode_pembayaran_id: pendaftaran.metode_pembayaran.id,
+      nama_pasien: pendaftaran.nama_pasien,
+      tanggal_lahir: pendaftaran.tanggal_lahir,
+      tempat_lahir: pendaftaran.tempat_lahir
+    };
   } catch (error) {
 
     console.log(error);
@@ -67,8 +80,24 @@ const listPendaftaran = async (): Promise<PendaftaranProp[]> => {
         nama_pasien: 'asc'
       }
     });
+    
+     return pendaftaranList.map((pendaftaran) => {
+      const { jenis_kelamin } = pendaftaran;
+      const validJenisKelamin = jenis_kelamin === 'L' || jenis_kelamin === 'P' ? jenis_kelamin : 'L'; // fallback
 
-     return pendaftaranList.map((pendaftaran: PendaftaranProp) => ({...pendaftaran}));
+      return {
+        alamat: pendaftaran.alamat,
+        id: pendaftaran.id,
+        jadwal_pengobatan_id: pendaftaran.jadwal_pengobatan_id,
+        jenis_kelamin: validJenisKelamin,
+        keluhan: pendaftaran.keluhan,
+        metode_pembayaran_id: pendaftaran.metode_pembayaran_id,
+        nama_pasien: pendaftaran.nama_pasien,
+        tanggal_lahir: pendaftaran.tanggal_lahir,
+        tempat_lahir: pendaftaran.tempat_lahir,
+      };
+    });
+
 
   } catch (error) {
     console.log(error)
@@ -77,4 +106,4 @@ const listPendaftaran = async (): Promise<PendaftaranProp[]> => {
 };
 
 
-module.exports = { insertPendaftaran, listPendaftaran, getPendaftaranById }
+export default { insertPendaftaran, listPendaftaran, getPendaftaranById }

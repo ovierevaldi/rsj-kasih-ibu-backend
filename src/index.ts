@@ -1,42 +1,30 @@
-const express = require('express');
+import express from 'express'
 import type { Request, Response } from 'express';
+import cors from 'cors';
+import pendaftaranRoutes from './routes/pendaftaran.routes.ts';
+import dokterRoutes from './routes/dokter.routes.ts';
+import jenisPengobatanRoutes from './routes/jenis_pengobatan.routes.ts';
+import metodePembayaranRoutes from './routes/metode_pembayaran.routes.ts';
+import jadwalPengobatanRoutes from './routes/jadwal_pengobatan.route.ts';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const cors = require('cors');
-
-// const { PrismaClient } = require('@prisma/client');
-// const prisma = new PrismaClient();
-
-// // async function main() {
-  
-// // };
-
-// // main()
-// //   .catch(e => console.error(e))
-// //   .finally(() => prisma.$disconnect());
-
-// allow all origins (development only)
 app.use(cors())
 
 app.use(express.json())
 
-app.use('/pendaftaran', require('./routes/pendaftaran.routes'));
-app.use('/dokter', require('./routes/dokter.routes'));
-app.use('/jenis-pengobatan', require('./routes/jenis_pengobatan.routes'));
-app.use('/metode-pembayaran', require('./routes/metode_pembayaran.routes'));
-app.use('/jadwal-pengobatan', require('./routes/jadwal_pengobatan.route'));
+app.use('/pendaftaran', pendaftaranRoutes);
+app.use('/dokter', dokterRoutes);
+app.use('/jenis-pengobatan', jenisPengobatanRoutes);
+app.use('/metode-pembayaran', metodePembayaranRoutes);
+app.use('/jadwal-pengobatan', jadwalPengobatanRoutes);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello, world!');
 });
 
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}`);
-// });
-
-// module.exports = app;
-
-// export default app;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 

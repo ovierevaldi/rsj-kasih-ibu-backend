@@ -1,6 +1,6 @@
-import { JenisPengobatanInput, JenisPengobatanProp, JenisPengobatanUpdate } from "../types/jenis_pengobatan";
+import { JenisPengobatanInput, JenisPengobatanProp, JenisPengobatanUpdate } from "../types/jenis_pengobatan.ts";
 
-const prisma = require("../lib/prisma")
+import prisma from "../lib/prisma.ts";
 
 export default class JenisPengobatanController{
   async insertJenisPengobatan(jenisPengobatanInput: JenisPengobatanInput): Promise<boolean>{

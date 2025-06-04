@@ -1,6 +1,5 @@
-import { MetodePembayaranInput, MetodePembayaranProp, MetodePembayaranUpdate } from "../types/metode_pembayaran";
-
-const prisma = require("../lib/prisma")
+import { MetodePembayaranInput, MetodePembayaranProp, MetodePembayaranUpdate } from "../types/metode_pembayaran.ts";
+import prisma from "../lib/prisma.ts";
 
 export default class MetodePembayaranController{
   async insertMetodePembayaran(metodePembayaranInput: MetodePembayaranInput): Promise<boolean>{

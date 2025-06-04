@@ -1,13 +1,15 @@
 import { Router, Request, Response } from 'express';
-import { PendaftaranInput, PendaftaranProp } from '../types/pendaftaran';
+import { PendaftaranInput, PendaftaranProp } from '../types/pendaftaran.ts';
 
-const { insertPendaftaran, listPendaftaran, getPendaftaranById } = require('../controller/pendaftaran.controller');
+// some-other-file.ts
+import pendaftaranService from '../controller/pendaftaran.controller.ts'
+
 
 const router = Router();
 
 router.get('/', (req: Request, res: Response) => {
 
-  listPendaftaran()
+  pendaftaranService.listPendaftaran()
   .then((pendaftaranList: PendaftaranProp[]) => {
     res.status(200).json(pendaftaranList);
   })
@@ -20,8 +22,8 @@ router.get('/', (req: Request, res: Response) => {
 router.get('/:id', (req: Request, res: Response) => {
   const id = parseInt(req.params.id, 10);
 
-  getPendaftaranById(id)
-  .then((pendafataranInfo: PendaftaranProp) => {
+  pendaftaranService.getPendaftaranById(id)
+  .then((pendafataranInfo: PendaftaranProp | null) => {
     res.status(200).json(pendafataranInfo);
   })
   .catch((error: Error) => {
@@ -33,7 +35,7 @@ router.get('/:id', (req: Request, res: Response) => {
 router.post('/', (req: Request, res: Response) => {
   const pendaftaranData = req.body as PendaftaranInput;
 
-  insertPendaftaran(pendaftaranData)
+  pendaftaranService.insertPendaftaran(pendaftaranData)
   .then((pendaftaranId: number) => {
     res.status(201).json({ message: "Pendaftaran created successfully!", data: pendaftaranId});
   })
@@ -44,4 +46,4 @@ router.post('/', (req: Request, res: Response) => {
   
 });
 
-module.exports = router;
+export default router;

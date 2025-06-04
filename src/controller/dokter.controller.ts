@@ -1,6 +1,5 @@
-import { DokterInputData, DokterProp, DokterUpdateData } from "../types/dokter";
-
-const prisma = require("../lib/prisma");
+import { DokterInputData, DokterProp, DokterUpdateData } from "../types/dokter.ts";
+import prisma from "../lib/prisma.ts";
 
 const listDokter = async (): Promise<DokterProp[]> => {
 
@@ -83,4 +82,4 @@ const updateDokter = async (id: number, data: DokterUpdateData): Promise<boolean
   }
 }
 
-module.exports = { listDokter, insertDokter, getDokterById, updateDokter };
+export default { listDokter, insertDokter, getDokterById, updateDokter };

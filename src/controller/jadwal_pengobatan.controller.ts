@@ -1,12 +1,10 @@
-import { JadwalPengobatanInput, JadwalPengobatanProp } from "../types/jadwalPengobatan.types";
-
-const prisma = require("../lib/prisma")
-
+import { JadwalPengobatanInput, JadwalPengobatanProp } from "../types/jadwalPengobatan.types.ts";
+import prisma from "../lib/prisma.ts";
 export default class JadwalPengobatanController {
 
   async listJadwalPengobatan(): Promise<JadwalPengobatanProp[]> {
     try {
-      const jadwalPengobatanList = await prisma.JadwalPengobatan.findMany({
+      const jadwalPengobatanList = await prisma.jadwalPengobatan.findMany({
         orderBy: {
           jadwal: 'asc'
         }
@@ -70,7 +68,7 @@ export default class JadwalPengobatanController {
 
   async insertJadwalPengobatan(jadwalPengobatanInput: JadwalPengobatanInput): Promise<boolean>{
     try {
-      await prisma.JadwalPengobatan.create({
+      await prisma.jadwalPengobatan.create({
         data: {
           jadwal: jadwalPengobatanInput.jadwal,
           id_dokter: jadwalPengobatanInput.id_dokter,

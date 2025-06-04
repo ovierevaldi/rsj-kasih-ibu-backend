@@ -6,6 +6,6 @@ export type JenisPengobatanInput =  {
 export type JenisPengobatanUpdate =  Partial<JenisPengobatanInput>;
 
 export type JenisPengobatanProp =  {
-  id: string;
+  id: number;
   nama_pengobatan: string;
 }

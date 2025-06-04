@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
-import JenisPengobatanController from '../controller/jenis_pengobatan.controller';
-import { JenisPengobatanInput, JenisPengobatanProp, JenisPengobatanUpdate } from '../types/jenis_pengobatan';
+import JenisPengobatanController from '../controller/jenis_pengobatan.controller.ts';
+import { JenisPengobatanInput, JenisPengobatanProp, JenisPengobatanUpdate } from '../types/jenis_pengobatan.ts';
 
 const router = Router();
 
@@ -65,4 +65,4 @@ router.put('/:id', (req: Request, res: Response) => {
 });
 
 
-module.exports  = router;
+export default router;
