@@ -111,5 +111,5 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "exclude": ["node_modules", "dist", "build", "coverage", "test", "tests", "spec", "specs", "e2e", "e2es", "examples", "example"],
-  "include": ["src/**/*.ts", "src/**/*.js", "api/**/*.ts", "api/**/*.js"]
+  "include": ["src", "api"]
 }
