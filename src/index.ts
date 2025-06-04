@@ -6,9 +6,10 @@ import dokterRoutes from './routes/dokter.routes.js';
 import jenisPengobatanRoutes from './routes/jenis_pengobatan.routes.js';
 import metodePembayaranRoutes from './routes/metode_pembayaran.routes.js';
 import jadwalPengobatanRoutes from './routes/jadwal_pengobatan.route.js';
+import serverless from 'serverless-http';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
 
 app.use(cors())
 
@@ -28,5 +29,4 @@ app.get('/', (req: Request, res: Response) => {
 //   console.log(`Server is running on port ${PORT}`);
 // });
 
-export default app;
-
+export const handler = serverless(app);
