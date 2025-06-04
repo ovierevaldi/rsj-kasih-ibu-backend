@@ -2,10 +2,10 @@
   "name": "rsj-kasih-ibu-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "api/index.js",
   "type": "module",
   "scripts": {
-    "start": "node dist/src/index.js",
+    "start": "node dist/api/index.js",
     "dev": "nodemon",
     "build": "rm -rf dist && tsc",
     "postinstall": "prisma generate"
