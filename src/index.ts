@@ -6,7 +6,6 @@ import dokterRoutes from './routes/dokter.routes.js';
 import jenisPengobatanRoutes from './routes/jenis_pengobatan.routes.js';
 import metodePembayaranRoutes from './routes/metode_pembayaran.routes.js';
 import jadwalPengobatanRoutes from './routes/jadwal_pengobatan.route.js';
-import serverless from 'serverless-http';
 
 const app = express();
 // const PORT = process.env.PORT || 3000;
@@ -30,10 +29,7 @@ app.get('/', (req: Request, res: Response) => {
 // });
 
 // export const handler = serverless(app, { provider: 'azure' });
-const handler = serverless(app);
-export default async (context: any, req: any) => {
-  context.res = await handler(context, req);
-};
+export default app; // ✅ Vercel needs the raw Express app in this file
 // export const funcName = async (context: any, req: any) => {
 //   context.res = await handler(context, req);
 // };
