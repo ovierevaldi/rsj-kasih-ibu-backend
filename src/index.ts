@@ -6,6 +6,8 @@ const PORT = process.env.PORT || 3000;
 
 const cors = require('cors');
 
+const serverless = require('serverless-http');
+
 // const { PrismaClient } = require('@prisma/client');
 // const prisma = new PrismaClient();
 
@@ -35,3 +37,6 @@ app.get('/', (req: Request, res: Response) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+module.exports = app;
+module.exports.handler = serverless(app);
