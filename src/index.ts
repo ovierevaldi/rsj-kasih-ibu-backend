@@ -31,7 +31,7 @@ app.get('/', (req: Request, res: Response) => {
 
 // export const handler = serverless(app, { provider: 'azure' });
 const handler = serverless(app);
-export const funcName = async (context: any, req: any) => {
+export default async (context: any, req: any) => {
   context.res = await handler(context, req);
 };
 // export const funcName = async (context: any, req: any) => {
