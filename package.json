@@ -7,8 +7,7 @@
   "scripts": {
     "start": "node dist/api/index.js",
     "dev": "nodemon",
-    "build": "rm -rf dist && tsc",
-    "postinstall": "prisma generate"
+    "build": "rm -rf dist && tsc"
   },
   "author": "Ovie Revaldi",
   "license": "ISC",
