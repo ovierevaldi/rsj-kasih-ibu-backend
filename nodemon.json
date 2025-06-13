@@ -1,5 +1,5 @@
 {
   "watch": ["src", "api", "prisma"],
   "ext": "js, ts",
-  "exec": "node --loader ts-node/esm api/index.ts"
+  "exec": "node --loader ts-node/esm src/index.ts"
 }
