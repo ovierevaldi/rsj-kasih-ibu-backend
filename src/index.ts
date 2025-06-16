@@ -1,5 +1,5 @@
-import express from 'express'
-import type { Request, Response } from 'express';
+import 'dotenv/config.js'
+import express from 'express';
 import cors from 'cors';
 import pendaftaranRoutes from './routes/pendaftaran.routes.js';
 import dokterRoutes from './routes/dokter.routes.js';
@@ -8,7 +8,7 @@ import metodePembayaranRoutes from './routes/metode_pembayaran.routes.js';
 import jadwalPengobatanRoutes from './routes/jadwal_pengobatan.route.js';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4500;
 
 app.use(cors())
 
@@ -21,7 +21,7 @@ app.use('/metode-pembayaran', metodePembayaranRoutes);
 app.use('/jadwal-pengobatan', jadwalPengobatanRoutes);
 
 app.get('/', (req, res) => {
-  res.send('Hello, world!');
+  res.send('Hello, worlds!');
 });
 
 app.listen(PORT, () => {
