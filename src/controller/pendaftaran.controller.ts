@@ -26,7 +26,7 @@ const insertPendaftaran = async (inputData: PendaftaranInput): Promise<number> =
   }
 };
 
-const getPendaftaranById = async (id: number): Promise<PendaftaranProp | null> => {
+const getPendaftaranById = async (id: number): Promise<any | null> => {
   try {
     const pendaftaran = await prisma.pendaftaran.findUnique({
       where: {
@@ -50,20 +50,7 @@ const getPendaftaranById = async (id: number): Promise<PendaftaranProp | null> =
       return null;
     }
 
-     const { jenis_kelamin } = pendaftaran;
-    const validJenisKelamin = jenis_kelamin === 'L' || jenis_kelamin === 'P' ? jenis_kelamin : 'L'; // fallback
-
-    return {
-      alamat: pendaftaran.alamat,
-      id: pendaftaran.id,
-      jadwal_pengobatan_id: pendaftaran.jadwal_pengobatan.id,
-      jenis_kelamin: validJenisKelamin,
-      keluhan: pendaftaran.keluhan,
-      metode_pembayaran_id: pendaftaran.metode_pembayaran.id,
-      nama_pasien: pendaftaran.nama_pasien,
-      tanggal_lahir: pendaftaran.tanggal_lahir,
-      tempat_lahir: pendaftaran.tempat_lahir
-    };
+    return pendaftaran;
   } catch (error) {
 
     console.log(error);
@@ -82,14 +69,12 @@ const listPendaftaran = async (): Promise<PendaftaranProp[]> => {
     });
     
      return pendaftaranList.map((pendaftaran) => {
-      const { jenis_kelamin } = pendaftaran;
-      const validJenisKelamin = jenis_kelamin === 'L' || jenis_kelamin === 'P' ? jenis_kelamin : 'L'; // fallback
 
       return {
         alamat: pendaftaran.alamat,
         id: pendaftaran.id,
         jadwal_pengobatan_id: pendaftaran.jadwal_pengobatan_id,
-        jenis_kelamin: validJenisKelamin,
+        jenis_kelamin: pendaftaran.jenis_kelamin,
         keluhan: pendaftaran.keluhan,
         metode_pembayaran_id: pendaftaran.metode_pembayaran_id,
         nama_pasien: pendaftaran.nama_pasien,

@@ -2,7 +2,7 @@ export type PendaftaranInput = {
   nama_pasien: string;
   tanggal_lahir: Date;
   tempat_lahir: string;
-  jenis_kelamin: 'L' | 'P';
+  jenis_kelamin: string;
   alamat: string;
   keluhan: string;
   jadwal_pengobatan_id: number;
@@ -14,7 +14,7 @@ export type PendaftaranProp = {
   nama_pasien: string;
   tanggal_lahir: Date;
   tempat_lahir: string;
-  jenis_kelamin: 'L' | 'P';
+  jenis_kelamin: string;
   alamat: string;
   keluhan: string;
   jadwal_pengobatan_id: number;
