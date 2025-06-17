@@ -1,3 +1,4 @@
+This is a server application for Handling Registration At RSJ Kasih Ibu, User Can Register online by accessing the website. this server handle the necessary API for that
 This project is created using NodeJS & Docker
 
 BEFORE INSTALL
